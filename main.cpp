@@ -178,10 +178,12 @@ do{
           cout<<"(1)Record Id or (2)Record Name:"<<endl;
           cin>>purchaseChoice;
           if(purchaseChoice==1){
-            cin>>pruchaseId;
+            cout<<"Enter Id:";
+            cin>>purchaseId;
             cashier->buyRecord(purchaseId);
           }
           else{
+            cout<<"Enter Name:";
             cin>>purchaseName;
             cashier->buyRecord(purchaseName);
 
