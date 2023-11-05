@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<bits/stdc++.h>
 #include<stdlib.h>
-#include<fstream.h>
+#include<fstream>
 
 using namespace std;
 
@@ -208,6 +208,9 @@ do{
           }
          
           r->billDisplay();
+
+          ofstream out("BillDocx.txt");
+          out<<"thank you";
 
           break;
 
