@@ -6,8 +6,8 @@
 using namespace std;
 
  ofstream out("BillDocx.txt"); //writing into bill
- char myBill;
  ifstream in("BillDocx.txt"); //reading from the bill 
+ static int total; 
 
 class Record {
     private:
@@ -84,7 +84,8 @@ class RecordStore{
       deleteRecord(i);
       cout << "You bought '" << title << "' for INR" << price
       << endl;
-      out<<title<<"|-----------------------------------------------------"<<price<<"INR";
+      out<<title<<"|-----------------------------------------------------"<<price<<"INR"<<endl;
+      total+=price;
       return;
       }
       }
@@ -99,7 +100,8 @@ class RecordStore{
       cashBalance += price;
       deleteRecord(i);
       cout << "You bought " << records[i].title << " for INR" << price << endl;
-       out<<records[i].title<<"|-----------------------------------------------------"<<price<<"INR";
+       out<<records[i].title<<"|-----------------------------------------------------"<<price<<"INR"<<endl;
+       total+=price;
       return;
       }
       }
@@ -213,7 +215,6 @@ do{
           if(purchaseChoice==1){
             cout<<"Enter Id:";
             cin>>purchaseId;
-
             cashier->buyRecord(purchaseId);
           }
           else{
@@ -222,20 +223,26 @@ do{
             cashier->buyRecord(purchaseName);
           }
          
-          r->billDisplay();
+      
           break;
 
         case 4:
+
+         char myBill;
           if(in.is_open()){
             while(in){
               myBill=in.get();
               cout<<myBill;
             }
           }
+          in.close();
           break;
 
         case 5:
+            r->billDisplay();
+            out<<endl<<"Final Amount---------------------------------------------"<<total<<endl;
           cout<<"Now Exiting";
+          return 0;
             break;
           
         default:cout<<"Invalid choice!";
