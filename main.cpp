@@ -5,6 +5,10 @@
 
 using namespace std;
 
+ ofstream out("BillDocx.txt"); //writing into bill
+ string myBill;
+ ifstream in("BillDocx.txt"); //reading from the bill 
+
 class Record {
     private:
     static string storeName;
@@ -28,7 +32,7 @@ class Record {
     friend class RecordStore; //friend class
 
       virtual void billDisplay(){ //virtual function
-    cout<<"No items purchased";
+          out<<endl<<"See you soon";
   }
 };
 
@@ -80,18 +84,22 @@ class RecordStore{
       deleteRecord(i);
       cout << "You bought '" << title << "' for INR" << price
       << endl;
+      out<<title<<"|-----------------------------------------------------"<<price<<"INR";
       return;
       }
       }
       cout << "Record not found in the store." << endl;
       }
+
+
       void buyRecord(const int& recordID) { //function overloading
       for (int i = 0; i < numRecords; ++i) {
       if (records[i].recordID == recordID) {
       double price = records[i].price;
       cashBalance += price;
       deleteRecord(i);
-      cout << "You bought " << records[i].title << " for $" << price << endl;
+      cout << "You bought " << records[i].title << " for INR" << price << endl;
+       out<<records[i].title<<"|-----------------------------------------------------"<<price<<"INR";
       return;
       }
       }
@@ -142,7 +150,7 @@ class Message: public Record{ //multiple inheritance
     int num;
     public:
    void billDisplay(){ 
-    cout<<"Thank you for your purchase at our store!";
+          out<<endl<<"thank you for your purchase!";
   }
 
 
@@ -158,9 +166,7 @@ int main() {
   int purchaseId;
   string purchaseName;
   int purchaseChoice;
- ofstream out("BillDocx.txt"); //writing into bill
- string myBill;
- ifstream in("BillDocx.txt"); //reading from the bill 
+
         
   
   cout<<"____________________________________________________________"<<endl;
@@ -172,7 +178,9 @@ int main() {
   Record* r;
   Message recordbill;
   r=&recordbill; //virtual function override
-  out<<"Cashier is"<<cname;
+  out<<"___________________________________BILL____________________________________"<<endl;
+  out<<"Cashier is "<<cname<<endl;
+  out<<"ITEMS----------------------------------------"<<endl;
 system("cls");// clear screen
 int c=0;
 
@@ -183,7 +191,7 @@ do{
       cout<<"2.Display Records"<<endl;
       cout<<"3.Buy Record"<<endl;
       cout<<"4.Read Bill"<<endl;
-      cout<<"5.Read Bill"<<endl;
+      cout<<"5.Exit"<<endl;
 
       cin>>c;
       switch(c){
@@ -205,6 +213,7 @@ do{
           if(purchaseChoice==1){
             cout<<"Enter Id:";
             cin>>purchaseId;
+
             cashier->buyRecord(purchaseId);
           }
           else{
@@ -214,23 +223,22 @@ do{
           }
          
           r->billDisplay();
-          out<<"thank you";
           break;
 
         case 4:
-          in>>myBill;
+          getline(in,myBill);
           cout<<myBill;
           break;
 
         case 5:
           cout<<"Now Exiting";
-            out<<"thank you";
+            break;
           
         default:cout<<"Invalid choice!";
       }
 
   }
-while(c!=4);
+while(c!=5);
 
 // cashier->addRecord("Album 1", "Artist 1", 10.99, 1);  //pass by value
 // cashier->addRecord("Album 2", "Artist 2", 12.49, 2);
