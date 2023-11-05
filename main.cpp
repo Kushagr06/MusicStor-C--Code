@@ -65,6 +65,7 @@ class RecordStore{
       cout<<"No records available.\n";
       }
       }
+      
       void buyRecord(const string& title) { //mutator function
       for (int i = 0; i < numRecords; ++i) {
       if (records[i].title == title) {
@@ -135,26 +136,81 @@ class Employee: public RecordStore{ //inheritance
 int main() {
   string cname;
   int cid;
+  string aname,aauthor;
+  float aprice;
+  int aid;
+  int purchaseId;
+  string purchaseName;
+  int purchaseChoice;
+
+  
   cout<<"____________________________________________________________"<<endl;
   cout<<"---------------------Cashier's Details:--------------------"<<endl;
   cout<<"Enter Name:";cin>>cname;
   cout<<"Enter ID:";cin>>cid;
+  cout<<"____________________________________________________________"<<endl;
+  Employee* cashier=new Employee(cname,cid); //pointer to class record
 system("cls");
-Employee* cashier=new Employee(cname,cid); //pointer to class record
-cashier->addRecord("Album 1", "Artist 1", 10.99, 1);  //pass by value
-cashier->addRecord("Album 2", "Artist 2", 12.49, 2);
-cashier->addRecord("Album 3", "Artist 3", 9.99, 3);
-cashier->listRecords();
-cashier->displayCashBalance();
-cashier->buyRecord("Album 2");
-cashier->listRecords();
-cashier->displayCashBalance();
-cashier->deleteRecord(0);
-cashier->listRecords();
-cashier->displayCashBalance();
-cashier->buyRecord(3);
-cashier->listRecords();
-cashier->displayCashBalance();
-cashier->buyRecord("Album 2");
+int c=0;
+
+do{
+      cout<<"\n_______________________<<MENU>>________________________________"<<endl;
+      cout<<"Enter your choice:"<<endl;
+      cout<<"1.Enter Records"<<endl;
+      cout<<"2.Display Records"<<endl;
+      cout<<"3.Buy Record"<<endl;
+      cout<<"4.Exit"<<endl;
+      cin>>c;
+      switch(c){
+        case 1:
+          cout<<"----Enter Record----"<<endl;
+          cout<<"Enter Name, Author, Price and Id:";
+          cin>>aname>>aauthor>>aprice>>aid;
+          cashier->addRecord(aname,aauthor,aprice,aid);  //pass by value
+          break;
+
+        case 2:
+          cout<<"----Display Records----"<<endl;
+          cashier->listRecords();
+          break;
+
+        case 3:
+          cout<<"(1)Record Id or (2)Record Name:"<<endl;
+          cin>>purchaseChoice;
+          if(purchaseChoice==1){
+            cin>>pruchaseId;
+            cashier->buyRecord(purchaseId);
+          }
+          else{
+            cin>>purchaseName;
+            cashier->buyRecord(purchaseName);
+
+          }
+          break;
+
+        case 4:
+          cout<<"Now Exiting";
+          break;
+
+        default:cout<<"Invalid choice!";
+      }
+
+  }
+while(c!=4);
+
+// cashier->addRecord("Album 1", "Artist 1", 10.99, 1);  //pass by value
+// cashier->addRecord("Album 2", "Artist 2", 12.49, 2);
+// cashier->addRecord("Album 3", "Artist 3", 9.99, 3);
+
+// cashier->displayCashBalance();
+// cashier->listRecords();
+// cashier->displayCashBalance();
+// cashier->deleteRecord(0);
+// cashier->listRecords();
+// cashier->displayCashBalance();
+// cashier->buyRecord(3);
+// cashier->listRecords();
+// cashier->displayCashBalance();
+// cashier->buyRecord("Album 2");
 return 0;
 }
