@@ -110,7 +110,7 @@ class RecordStore{
       }
 };
 
-class Employee: public RecordStore{
+class Employee: public RecordStore{ //inheritance
   private:
   string  employeeName;
   int employeeID;
@@ -123,7 +123,7 @@ class Employee: public RecordStore{
 
   void EmployeeDetails(int id){
     cout<<"Name: "<<employeeName<<endl;
-    out<<"Id: "<<employeeID<<endl;
+    cout<<"Id: "<<employeeID<<endl;
   }
 
 };
