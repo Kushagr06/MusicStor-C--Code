@@ -137,7 +137,7 @@ class Employee: public RecordStore{ //inheritance
   
 };
 
-class Bill: public Record{ //multiple inheritance
+class Message: public Record{ //multiple inheritance
     int num;
     public:
    void billDisplay(){ 
@@ -166,7 +166,7 @@ int main() {
   cout<<"____________________________________________________________"<<endl;
   Employee* cashier=new Employee(cname,cid); //pointer to class record
   Record* r;
-  Bill recordbill;
+  Message recordbill;
   r=&recordbill; //virtual function override
 system("cls");
 int c=0;
