@@ -4,7 +4,7 @@
 using namespace std;
 
 class Record {
-    protected:
+    private:
     static string storeName;
     int recordID;
     string title;
@@ -26,9 +26,9 @@ class Record {
 };
 
 
-class RecordStore {
-      private:
-      Record* records; //pointer to class record
+class RecordStore{
+      protected:
+      Record* records; 
       int numRecords;
       double cashBalance;
       public:
@@ -103,11 +103,24 @@ class RecordStore {
       }
 };
 
+class Employee: public RecordStore{
+  private:
+  string  employeeName;
+  int employeeID;
+
+  public:
+  Employee(string employeeName, int employeeID ){
+    this->employeeName=employeeName;
+    this->employeeID=employeeID;
+  }
+
+};
+
 
 
 
 int main() {
-RecordStore* store=new RecordStore;
+RecordStore* store=new RecordStore; //pointer to class record
 store->addRecord("Album 1", "Artist 1", 10.99, 1);  //pass by value
 store->addRecord("Album 2", "Artist 2", 12.49, 2);
 store->addRecord("Album 3", "Artist 3", 9.99, 3);
