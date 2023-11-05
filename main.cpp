@@ -6,7 +6,7 @@
 using namespace std;
 
  ofstream out("BillDocx.txt"); //writing into bill
- string myBill;
+ char myBill;
  ifstream in("BillDocx.txt"); //reading from the bill 
 
 class Record {
@@ -180,7 +180,7 @@ int main() {
   r=&recordbill; //virtual function override
   out<<"___________________________________BILL____________________________________"<<endl;
   out<<"Cashier is "<<cname<<endl;
-  out<<"ITEMS----------------------------------------"<<endl;
+  out<<"ITEMS----------------------------------------PRICE"<<endl;
 system("cls");// clear screen
 int c=0;
 
@@ -226,8 +226,12 @@ do{
           break;
 
         case 4:
-          getline(in,myBill);
-          cout<<myBill;
+          if(in.is_open()){
+            while(in){
+              myBill=in.get();
+              cout<<myBill;
+            }
+          }
           break;
 
         case 5:
