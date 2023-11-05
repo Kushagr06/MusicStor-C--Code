@@ -11,6 +11,7 @@ class Record {
     string title;
     string artist;
     double price;
+
     public:
     Record(string title = "", string artist = "", double price = 0.0,
     int recordID = 1){ //default constructor
@@ -24,6 +25,10 @@ class Record {
     << artist << " | Price: INR" << price << endl;
     }
     friend class RecordStore; //friend class
+
+      virtual void billDisplay(){ //virtual function
+    cout<<"No items purchased";
+  }
 };
 
 
@@ -128,17 +133,17 @@ class Employee: public RecordStore{ //inheritance
     cout<<"Id: "<<employeeID<<endl;
   }
 
-  virtual void billDisplay(){ //virtual function
-    cout<<"No items purchased";
-  }
+
   
 };
 
-class Bill: public Employee{ //multi level inheritance
+class Bill: public Record{ //multiple inheritance
+    int num;
     public:
    void billDisplay(){ 
-    cout<<"Thank you for your purchase at our store!"
+    cout<<"Thank you for your purchase at our store!";
   }
+
 
 };
 
@@ -160,8 +165,9 @@ int main() {
   cout<<"Enter ID:";cin>>cid;
   cout<<"____________________________________________________________"<<endl;
   Employee* cashier=new Employee(cname,cid); //pointer to class record
+  Record* r;
   Bill recordbill;
-  cashier=&recordbill; //virtual function override
+  r=&recordbill; //virtual function override
 system("cls");
 int c=0;
 
@@ -200,7 +206,7 @@ do{
             cashier->buyRecord(purchaseName);
           }
          
-          cashier->billDisplay();
+          r->billDisplay();
 
           break;
 
