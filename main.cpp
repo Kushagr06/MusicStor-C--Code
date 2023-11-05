@@ -84,7 +84,7 @@ class RecordStore{
       deleteRecord(i);
       cout << "You bought '" << title << "' for INR" << price
       << endl;
-      out<<title<<"|-----------------------------------------------------"<<price<<"INR"<<endl;
+      out<<records[i].title<<"|-----------------------------------------------------"<<price<<"INR"<<endl;
       total+=price;
       return;
       }
@@ -139,7 +139,7 @@ class Employee: public RecordStore{ //inheritance
     this->employeeID=employeeID;
   }
 
-  void EmployeeDetails(int id){
+  void EmployeeDetails(){
     cout<<"Name: "<<employeeName<<endl;
     cout<<"Id: "<<employeeID<<endl;
   }
@@ -227,7 +227,6 @@ do{
           break;
 
         case 4:
-
          char myBill;
           if(in.is_open()){
             while(in){
@@ -235,12 +234,12 @@ do{
               cout<<myBill;
             }
           }
-          in.close();
+          in.seekg(0);
           break;
 
         case 5:
             r->billDisplay();
-            out<<endl<<"Final Amount---------------------------------------------"<<total<<endl;
+            out<<endl<<"Final Amount---------------------------------------------"<<total<<"INR"<<endl;
           cout<<"Now Exiting";
           return 0;
             break;
