@@ -31,6 +31,7 @@ class RecordStore{
       Record* records; 
       int numRecords;
       double cashBalance;
+      int noofEmployees;
       public:
       RecordStore(){
       this->records = nullptr;
@@ -40,6 +41,7 @@ class RecordStore{
       ~RecordStore() { //destructor
       delete[] records;
       }
+
       void addRecord(const string& title, const string& artist, double
       price, int recordID) { //pass by reference
       Record* newRecords = new Record[numRecords + 1]; //dynamic memory allocation
@@ -101,6 +103,11 @@ class RecordStore{
       void displayCashBalance(){
       cout << "Cash Balance: INR" << cashBalance << endl;
       }
+
+      void countEmployees(){
+        cout<<"Enter the number of employees at the store";
+        cin>>noofEmployees;
+      }
 };
 
 class Employee: public RecordStore{
@@ -112,6 +119,11 @@ class Employee: public RecordStore{
   Employee(string employeeName, int employeeID ){
     this->employeeName=employeeName;
     this->employeeID=employeeID;
+  }
+
+  void EmployeeDetails(int id){
+    cout<<"Name: "<<employeeName<<endl;
+    out<<"Id: "<<employeeID<<endl;
   }
 
 };
