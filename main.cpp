@@ -6,8 +6,8 @@
 using namespace std;
 
  ofstream out("BillDocx.txt"); //writing into bill
+ char myBill;
  ifstream in("BillDocx.txt"); //reading from the bill 
- static int total; 
 
 class Record {
     private:
@@ -84,8 +84,7 @@ class RecordStore{
       deleteRecord(i);
       cout << "You bought '" << title << "' for INR" << price
       << endl;
-      out<<records[i].title<<"|-----------------------------------------------------"<<price<<"INR"<<endl;
-      total+=price;
+      out<<title<<"|-----------------------------------------------------"<<price<<"INR"<<endl;
       return;
       }
       }
@@ -101,7 +100,6 @@ class RecordStore{
       deleteRecord(i);
       cout << "You bought " << records[i].title << " for INR" << price << endl;
        out<<records[i].title<<"|-----------------------------------------------------"<<price<<"INR"<<endl;
-       total+=price;
       return;
       }
       }
@@ -119,7 +117,7 @@ class RecordStore{
       endl;
       }
       void displayCashBalance(){
-      cout << "Cash Balance: INR" << cashBalance << endl;
+      cout << "Final Amount--------------------------------------------: INR" << cashBalance << endl;
       }
 
       void countEmployees(){
@@ -171,23 +169,23 @@ int main() {
 
         
   
-  cout<<"____________________________________________________________"<<endl;
+  cout<<"____________________"<<endl;
   cout<<"---------------------Cashier's Details:--------------------"<<endl;
   cout<<"Enter Name:";cin>>cname;
   cout<<"Enter ID:";cin>>cid;
-  cout<<"____________________________________________________________"<<endl;
+  cout<<"____________________"<<endl;
   Employee* cashier=new Employee(cname,cid); //pointer to class record
   Record* r;
   Message recordbill;
   r=&recordbill; //virtual function override
-  out<<"___________________________________BILL____________________________________"<<endl;
+  out<<"____________BILL_____________"<<endl;
   out<<"Cashier is "<<cname<<endl;
   out<<"ITEMS----------------------------------------PRICE"<<endl;
 system("cls");// clear screen
 int c=0;
 
 do{
-      cout<<"\n_______________________<<MENU>>________________________________"<<endl;
+      cout<<"\n________<<MENU>>___________"<<endl;
       cout<<"Enter your choice:"<<endl;
       cout<<"1.Enter Records"<<endl;
       cout<<"2.Display Records"<<endl;
@@ -199,7 +197,7 @@ do{
       switch(c){
         case 1:
           cout<<"----Enter Record----"<<endl;
-          cout<<"Enter Name, Author, Price and Id:";
+          cout<<"Enter Name, Artist, Price and Id:";
           cin>>aname>>aauthor>>aprice>>aid;
           cashier->addRecord(aname,aauthor,aprice,aid);  //pass by value
           break;
@@ -215,6 +213,7 @@ do{
           if(purchaseChoice==1){
             cout<<"Enter Id:";
             cin>>purchaseId;
+
             cashier->buyRecord(purchaseId);
           }
           else{
@@ -223,25 +222,22 @@ do{
             cashier->buyRecord(purchaseName);
           }
          
-      
+       
           break;
 
         case 4:
-         char myBill;
           if(in.is_open()){
             while(in){
               myBill=in.get();
               cout<<myBill;
             }
           }
-          in.seekg(0);
           break;
 
         case 5:
-            r->billDisplay();
-            out<<endl<<"Final Amount---------------------------------------------"<<total<<"INR"<<endl;
+           r->billDisplay();
+           cashier->displayCashBalance();
           cout<<"Now Exiting";
-          return 0;
             break;
           
         default:cout<<"Invalid choice!";
