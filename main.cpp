@@ -66,6 +66,7 @@ class RecordStore{
       records = newRecords;
       ++numRecords;
       }
+      
       void listRecords() const{
       cout << "Records in the store:" << endl;
       for (int i = 0; i < numRecords; ++i) {
@@ -77,7 +78,9 @@ class RecordStore{
       }
       
       void buyRecord(const string& title) { //mutator function
+
       for (int i = 0; i < numRecords; ++i) {
+
       if (records[i].title == title) {
       double price = records[i].price;
       cashBalance += price;
