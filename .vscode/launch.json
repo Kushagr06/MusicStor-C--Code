@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/Kushagr Narayan/Desktop/c++Project",
-      "program": "c:/Users/Kushagr Narayan/Desktop/c++Project/build/Debug/outDebug",
+      "cwd": "c:/Users/Kushagr Narayan/Desktop/sem7/c++Project",
+      "program": "c:/Users/Kushagr Narayan/Desktop/sem7/c++Project/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
