@@ -128,9 +128,19 @@ class Employee: public RecordStore{ //inheritance
     cout<<"Id: "<<employeeID<<endl;
   }
 
+  virtual void billDisplay(){ //virtual function
+    cout<<"No items purchased";
+  }
+  
 };
 
+class Bill: public Employee{ //multi level inheritance
+    public:
+   void billDisplay(){ 
+    cout<<"Thank you for your purchase at our store!"
+  }
 
+};
 
 
 int main() {
@@ -150,6 +160,8 @@ int main() {
   cout<<"Enter ID:";cin>>cid;
   cout<<"____________________________________________________________"<<endl;
   Employee* cashier=new Employee(cname,cid); //pointer to class record
+  Bill recordbill;
+  cashier=&recordbill; //virtual function override
 system("cls");
 int c=0;
 
@@ -186,8 +198,10 @@ do{
             cout<<"Enter Name:";
             cin>>purchaseName;
             cashier->buyRecord(purchaseName);
-
           }
+         
+          cashier->billDisplay();
+
           break;
 
         case 4:
