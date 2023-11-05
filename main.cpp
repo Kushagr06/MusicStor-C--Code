@@ -172,6 +172,7 @@ int main() {
   Record* r;
   Message recordbill;
   r=&recordbill; //virtual function override
+  out<<"Cashier is"<<cname;
 system("cls");// clear screen
 int c=0;
 
