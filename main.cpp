@@ -158,7 +158,10 @@ int main() {
   int purchaseId;
   string purchaseName;
   int purchaseChoice;
-
+ ofstream out("BillDocx.txt"); //writing into bill
+ string myBill;
+ ifstream in("BillDocx.txt"); //reading from the bill 
+        
   
   cout<<"____________________________________________________________"<<endl;
   cout<<"---------------------Cashier's Details:--------------------"<<endl;
@@ -169,7 +172,7 @@ int main() {
   Record* r;
   Message recordbill;
   r=&recordbill; //virtual function override
-system("cls");
+system("cls");// clear screen
 int c=0;
 
 do{
@@ -178,7 +181,9 @@ do{
       cout<<"1.Enter Records"<<endl;
       cout<<"2.Display Records"<<endl;
       cout<<"3.Buy Record"<<endl;
-      cout<<"4.Exit"<<endl;
+      cout<<"4.Read Bill"<<endl;
+      cout<<"5.Read Bill"<<endl;
+
       cin>>c;
       switch(c){
         case 1:
@@ -208,16 +213,18 @@ do{
           }
          
           r->billDisplay();
-
-          ofstream out("BillDocx.txt");
           out<<"thank you";
-
           break;
 
         case 4:
-          cout<<"Now Exiting";
+          in>>myBill;
+          cout<<myBill;
           break;
 
+        case 5:
+          cout<<"Now Exiting";
+            out<<"thank you";
+          
         default:cout<<"Invalid choice!";
       }
 
