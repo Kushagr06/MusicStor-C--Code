@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<bits/stdc++.h>
+#include<stdlib.h>
 
 using namespace std;
 
@@ -132,21 +133,28 @@ class Employee: public RecordStore{ //inheritance
 
 
 int main() {
-RecordStore* store=new RecordStore; //pointer to class record
-store->addRecord("Album 1", "Artist 1", 10.99, 1);  //pass by value
-store->addRecord("Album 2", "Artist 2", 12.49, 2);
-store->addRecord("Album 3", "Artist 3", 9.99, 3);
-store->listRecords();
-store->displayCashBalance();
-store->buyRecord("Album 2");
-store->listRecords();
-store->displayCashBalance();
-store->deleteRecord(0);
-store->listRecords();
-store->displayCashBalance();
-store->buyRecord(3);
-store->listRecords();
-store->displayCashBalance();
-store->buyRecord("Album 2");
+  string cname;
+  int cid;
+  cout<<"____________________________________________________________"<<endl;
+  cout<<"---------------------Cashier's Details:--------------------"<<endl;
+  cout<<"Enter Name:";cin>>cname;
+  cout<<"Enter ID:";cin>>cid;
+system("cls");
+Employee* cashier=new Employee(cname,cid); //pointer to class record
+cashier->addRecord("Album 1", "Artist 1", 10.99, 1);  //pass by value
+cashier->addRecord("Album 2", "Artist 2", 12.49, 2);
+cashier->addRecord("Album 3", "Artist 3", 9.99, 3);
+cashier->listRecords();
+cashier->displayCashBalance();
+cashier->buyRecord("Album 2");
+cashier->listRecords();
+cashier->displayCashBalance();
+cashier->deleteRecord(0);
+cashier->listRecords();
+cashier->displayCashBalance();
+cashier->buyRecord(3);
+cashier->listRecords();
+cashier->displayCashBalance();
+cashier->buyRecord("Album 2");
 return 0;
 }
