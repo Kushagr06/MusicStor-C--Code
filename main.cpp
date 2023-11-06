@@ -186,7 +186,7 @@ int main() {
   int purchaseChoice;
 
         
-  
+  system("cls")
   cout<<"____________________"<<endl;
   cout<<"---------------------Cashier's Details:--------------------"<<endl;
   cout<<"Enter Name:";cin>>cname;
