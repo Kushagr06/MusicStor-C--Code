@@ -89,10 +89,12 @@ class RecordStore{
       if (records[i].title == title) {
       double price = records[i].price;
       cashBalance += price;
-      deleteRecord(i);
-      cout << "You bought '" << title << "' for INR" << price
+     
+      cout << "You bought '" << records[i].title << "' for INR" << price
       << endl;
       out<<title<<"|-----------------------------------------------------"<<price<<"INR"<<endl;
+
+       deleteRecord(i);
       return;
       }
       }
@@ -105,9 +107,11 @@ class RecordStore{
       if (records[i].recordID == recordID) {
       double price = records[i].price;
       cashBalance += price;
-      deleteRecord(i);
+     
       cout << "You bought " << records[i].title << " for INR" << price << endl;
        out<<records[i].title<<"|-----------------------------------------------------"<<price<<"INR"<<endl;
+
+        deleteRecord(i);
       return;
       }
       }
@@ -125,7 +129,7 @@ class RecordStore{
       endl;
       }
       void displayCashBalance(){
-      cout << "Final Amount--------------------------------------------: INR" << cashBalance << endl;
+      out << "Final Amount--------------------------------------------: INR" << cashBalance << endl;
       }
 
       void countEmployees(){
@@ -211,9 +215,9 @@ do{
       switch(c){
         case 1:
           cout<<"----Enter Record----"<<endl;
+          
           cout<<"Enter Name, Artist, Price and Id:";
-          getline(cin,aname);
-          cin>>aauthor>>aprice>>aid;
+          cin>>aname>>aauthor>>aprice>>aid;
           cashier->addRecord(aname,aauthor,aprice,aid);  //pass by value
           break;
 
@@ -250,8 +254,7 @@ do{
           break;
 
         case 5:
-           r->billDisplay();
-           delete r;
+           r->billDisplay();  
            cashier->displayCashBalance();
           cout<<"Now Exiting";
             break;
@@ -262,6 +265,7 @@ do{
   }
 while(c!=5);
 
+ delete r;
 // cashier->addRecord("Album 1", "Artist 1", 10.99, 1);  //pass by value
 // cashier->addRecord("Album 2", "Artist 2", 12.49, 2);
 // cashier->addRecord("Album 3", "Artist 3", 9.99, 3);
