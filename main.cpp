@@ -25,6 +25,7 @@ class Record {
     this->price = price;
     this->recordID = recordID;
     }
+
     void display(){ //inspector function
     cout << "#"<< recordID <<" Title: " << title << " | Artist: "
     << artist << " | Price: INR" << price << endl;
@@ -33,6 +34,9 @@ class Record {
 
       virtual void billDisplay(){ //virtual function
           out<<endl<<"See you soon";
+  }
+   virtual ~Record(){                      //virtual destructor
+    cout<<"Base destructor called";
   }
 };
 
@@ -152,8 +156,14 @@ class Employee: public RecordStore{ //inheritance
 class Message: public Record{ //multiple inheritance
     int num;
     public:
+    Message(){
+      cout<<"Derived Constructor";
+    }
    void billDisplay(){ 
           out<<endl<<"thank you for your purchase!";
+  }
+  ~Message(){
+    cout<<"Derived Destructor"; 
   }
 
 
@@ -182,7 +192,7 @@ int main() {
   Message recordbill;
   r=&recordbill; //virtual function override
   out<<"____________BILL_____________"<<endl;
-  out<<"Cashier is "<<cname<<endl;
+  out<<"Your Cashier: "<<cname<<endl;
   out<<"ITEMS----------------------------------------PRICE"<<endl;
 system("cls");// clear screen
 int c=0;
@@ -239,6 +249,7 @@ do{
 
         case 5:
            r->billDisplay();
+           delete r;
            cashier->displayCashBalance();
           cout<<"Now Exiting";
             break;
