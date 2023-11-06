@@ -165,7 +165,7 @@ class Message: public Record{ //multiple inheritance
       cout<<"Derived Constructor";
     }
    void billDisplay(){ 
-          out<<endl<<"thank you for your purchase!";
+          out<<endl<<"thank you for your purchase!"<<endl;
   }
   ~Message(){
     cout<<"Derived Destructor"; 
