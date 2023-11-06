@@ -115,6 +115,7 @@ class RecordStore{
       }
       cout << "Record not found in the store." << endl;
       }
+      
       void deleteRecord(int index) {
       if (index < 0 || index >= numRecords) {
       return;
