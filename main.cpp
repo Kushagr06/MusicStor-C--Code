@@ -10,7 +10,8 @@ using namespace std;
  char myBill;
  ifstream in("BillDocx.txt"); //reading from the bill 
 
-class Record {
+
+class Record { //parent class
     private:
     static string storeName;
     int recordID;
@@ -58,6 +59,7 @@ class RecordStore{
       delete[] records;
       }
 
+
       void addRecord(const string& title, const string& artist, double
       price, int recordID) { //pass by reference
       Record* newRecords = new Record[numRecords + 1]; //dynamic memory allocation
@@ -72,6 +74,7 @@ class RecordStore{
       ++numRecords;
       }
       
+
       void listRecords() const{
       cout << "Records in the store:" << endl;
       for (int i = 0; i < numRecords; ++i) {
@@ -82,18 +85,15 @@ class RecordStore{
       }
       }
       
+
       void buyRecord(const string& title) { //mutator function
-
       for (int i = 0; i < numRecords; ++i) {
-
       if (records[i].title == title) {
       double price = records[i].price;
-      cashBalance += price;
-     
+      cashBalance += price;   
       cout << "You bought '" << records[i].title << "' for INR" << price
       << endl;
       out<<title<<"|-----------------------------------------------------"<<price<<"INR"<<endl;
-
        deleteRecord(i);
       return;
       }
@@ -107,10 +107,8 @@ class RecordStore{
       if (records[i].recordID == recordID) {
       double price = records[i].price;
       cashBalance += price;
-     
       cout << "You bought " << records[i].title << " for INR" << price << endl;
        out<<records[i].title<<"|-----------------------------------------------------"<<price<<"INR"<<endl;
-
         deleteRecord(i);
       return;
       }
@@ -128,14 +126,13 @@ class RecordStore{
       cout << "Record " << index+1 << " deleted from the store." <<
       endl;
       }
+
+
       void displayCashBalance(){
       out << "Final Amount--------------------------------------------: INR" << cashBalance << endl;
       }
 
-      void countEmployees(){
-        cout<<"Enter the number of employees at the store";
-        cin>>noofEmployees;
-      }
+     
 };
 
 class Employee: public RecordStore{ //inheritance
@@ -153,8 +150,6 @@ class Employee: public RecordStore{ //inheritance
     cout<<"Name: "<<employeeName<<endl;
     cout<<"Id: "<<employeeID<<endl;
   }
-
-
   
 };
 
@@ -170,8 +165,6 @@ class Message: public Record{ //multiple inheritance
   ~Message(){
     cout<<"Derived Destructor"; 
   }
-
-
 };
 
 
