@@ -2,6 +2,7 @@
 #include<bits/stdc++.h>
 #include<stdlib.h>
 #include<fstream>
+#include<iostream>
 
 using namespace std;
 
@@ -211,7 +212,8 @@ do{
         case 1:
           cout<<"----Enter Record----"<<endl;
           cout<<"Enter Name, Artist, Price and Id:";
-          cin>>aname>>aauthor>>aprice>>aid;
+          getline(cin,aname);
+          cin>>aauthor>>aprice>>aid;
           cashier->addRecord(aname,aauthor,aprice,aid);  //pass by value
           break;
 
